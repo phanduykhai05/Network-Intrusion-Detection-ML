@@ -13,10 +13,10 @@
 ---
 
 ## 📑 Mục lục
-1. [Giới thiệu bài lab](#giới-thiệu-bài-lab)
-2. [Yêu cầu bài lab](#yêu-cầu-bài-lab)
-3. [Sản phẩm bàn giao](#sản-phẩm-bàn-giao)
-4. [Tham khảo](#tham-khảo)
+1. [Giới thiệu bài lab](#1--giới-thiệu-bài-lab)
+2. [Yêu cầu bài lab](#2--yêu-cầu-bài-lab)
+3. [Sản phẩm bàn giao](#3--sản-phẩm-bàn-giao)
+4. [Tham khảo](#4--tham-khảo)
 
 ---
 
