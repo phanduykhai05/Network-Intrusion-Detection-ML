@@ -1,0 +1,16 @@
+data/*.csv
+data/*.zip
+
+# models/*.pkl
+# models/*.joblib
+
+logs/*.log
+!logs/alerts.log
+
+__pycache__/
+*.zip
+kaggle.json
+.ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
