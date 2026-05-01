@@ -4,7 +4,7 @@
 
 | # | Họ tên                | MSSV/Branch   | Nhiệm vụ                                                                                   |
 |---|-----------------------|--------------|-------------------------------------------------------------------------------------------|
-| 1 | Duy Khải (Nhóm trưởng) | N23DVCN026   | Quản lý Git/GitHub, Triển khai mô hình tốt nhất, Tổng hợp sản phẩm, README, Merge code    |
+| 1 | Duy Khải (Nhóm trưởng) | main   | Quản lý Git/GitHub, Triển khai mô hình tốt nhất, Tổng hợp sản phẩm, README, Merge code    |
 | 2 | Quốc Hiếu             | N23DVCN020   | Phân tích dữ liệu (EDA) & Tiền xử lý dữ liệu                                              |
 | 3 | N. Gia Huy            | N23DVCN023   | Xử lý mất cân bằng & Chọn đặc trưng                                                       |
 | 4 | T. Gia Huy            | N23DVCN022   | Huấn luyện mô hình (Logistic Regression, SVM, Naive Bayes)                                |
