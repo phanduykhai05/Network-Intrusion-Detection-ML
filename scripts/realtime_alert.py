@@ -25,9 +25,9 @@ SCALER_PATH  = os.path.join(BASE_DIR, "models", "scaler.pkl")
 LABELS_PATH  = os.path.join(BASE_DIR, "models", "label_classes.npy")
 LOG_PATH     = os.path.join(BASE_DIR, "alerts.log")
 
-# ── 18 core features (must match training order) ───────────────────────────
+# ── 17 core features (must match training order in imbalance_feature_selection.py) ──
 SELECTED_FEATURES = [
-    'Protocol', 'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts',
+    'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts',
     'TotLen Fwd Pkts', 'TotLen Bwd Pkts', 'Fwd Pkt Len Mean',
     'Bwd Pkt Len Mean', 'Flow Byts/s', 'Flow Pkts/s',
     'Pkt Len Mean', 'Pkt Len Std', 'SYN Flag Cnt',
@@ -65,7 +65,7 @@ def main():
         ])
         print("[WARN] label_classes.npy not found. Using default CIC-IDS2017 class names.")
 
-    # Validate scaler matches 18-feature input
+    # Validate scaler matches 17-feature input
     n_features = len(SELECTED_FEATURES)
     if scaler is not None and hasattr(scaler, 'n_features_in_') and scaler.n_features_in_ != n_features:
         print(f"[WARN] Scaler expects {scaler.n_features_in_} features but we have {n_features}. "

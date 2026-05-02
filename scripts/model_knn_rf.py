@@ -34,8 +34,8 @@ def train_and_evaluate():
     y_test = test['Label']
 
     models = {
-        'KNN': KNeighborsClassifier(),
-        'Random Forest': RandomForestClassifier(random_state=42)
+        'KNN': KNeighborsClassifier(algorithm='ball_tree', n_jobs=-1),
+        'Random Forest': RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
     }
     for name, model in models.items():
         model.fit(X_train, y_train)

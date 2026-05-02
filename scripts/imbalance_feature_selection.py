@@ -1,6 +1,8 @@
 import pandas as pd
+import numpy as np
 import os
 import gc
+import joblib
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -9,9 +11,9 @@ from sklearn.model_selection import train_test_split
 # 1. Định nghĩa đường dẫn gốc
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# 2. Đặc trưng mục tiêu
+# 2. Đặc trưng mục tiêu (17 features — must match realtime_alert.py SELECTED_FEATURES)
 TARGET_FEATURES = [
-    'Destination Port', 'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts',
+    'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts',
     'TotLen Fwd Pkts', 'TotLen Bwd Pkts', 'Fwd Pkt Len Mean', 'Bwd Pkt Len Mean',
     'Flow Byts/s', 'Flow Pkts/s', 'Pkt Len Mean', 'Pkt Len Std',
     'SYN Flag Cnt', 'ACK Flag Cnt', 'FIN Flag Cnt', 'RST Flag Cnt',
@@ -112,4 +114,4 @@ def process_data():
     print(f"🎉 HOÀN THÀNH! Tập train hiện có {len(train_df)} dòng.")
 
 if __name__ == "__main__":
-    process_data("./data/processed/cleaned_data.csv", "../data/")
+    process_data()

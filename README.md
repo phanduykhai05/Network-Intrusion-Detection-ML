@@ -56,8 +56,8 @@ Dự án này xây dựng hệ thống phát hiện xâm nhập mạng thời gi
 ### 2.3. Xử lý mất cân bằng & Chọn đặc trưng (N. Gia Huy)
 - Mã hóa nhãn bằng LabelEncoder, chuẩn hóa số học bằng StandardScaler.
 - Pipeline cân bằng dữ liệu: SMOTE (tăng nhóm thiểu số lên 10% nhóm đa số), RandomUnderSampler (giảm Benign).
-- Lọc giữ 18 đặc trưng cốt lõi:
-  - 'Protocol', 'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts', 'TotLen Fwd Pkts', 'TotLen Bwd Pkts',
+- Lọc giữ 17 đặc trưng cốt lõi:
+  - 'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts', 'TotLen Fwd Pkts', 'TotLen Bwd Pkts',
     'Fwd Pkt Len Mean', 'Bwd Pkt Len Mean', 'Flow Byts/s', 'Flow Pkts/s', 'Pkt Len Mean', 'Pkt Len Std',
     'SYN Flag Cnt', 'ACK Flag Cnt', 'FIN Flag Cnt', 'RST Flag Cnt', 'PSH Flag Cnt', 'URG Flag Cnt'
 - Chia tập train/test, xuất dữ liệu cuối cùng.
@@ -104,24 +104,70 @@ Dự án này xây dựng hệ thống phát hiện xâm nhập mạng thời gi
 
 ## 🚀 Cài đặt & Sử dụng
 
-### 1. Clone repository
-```bash
-git clone <LINK_REPO>
-cd Network-Intrusion-Detection-ML
-```
+### Yêu cầu hệ thống
+- **Python** 3.9 trở lên (khuyến nghị 3.11/3.12)
+- **RAM** tối thiểu 8 GB (khuyến nghị 16 GB khi chạy SMOTE)
+- **Dung lượng ổ đĩa** ~5 GB (dữ liệu CIC-IDS2017 + models)
 
-### 2. Cài đặt thư viện phụ thuộc
+### Bước 1 — Clone & cài thư viện
 ```bash
+git clone https://github.com/phanduykhai05/Network-Intrusion-Detection-ML.git
+cd Network-Intrusion-Detection-ML
 pip install -r requirements.txt
 ```
 
-### 3. Chạy notebook hoặc script
-- Mở Jupyter Notebook (`.ipynb`) và chạy lần lượt từ trên xuống dưới.
-- Hoặc chạy các script Python theo hướng dẫn trong notebook.
+### Bước 2 — Chuẩn bị dữ liệu thô
+Tải 8 file CSV của bộ dữ liệu **CIC-IDS2017** và đặt vào thư mục `data/`:
+```
+data/
+├── Monday-WorkingHours.pcap_ISCX.csv
+├── Tuesday-WorkingHours.pcap_ISCX.csv
+├── Wednesday-workingHours.pcap_ISCX.csv
+├── Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+├── Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+├── Friday-WorkingHours-Morning.pcap_ISCX.csv
+├── Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+└── Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+```
+> Nguồn: [Kaggle – Network Intrusion Dataset](https://www.kaggle.com/datasets/chethuhn/network-intrusion-dataset)
 
-### 4. Demo cảnh báo thời gian thực
-- Sau khi huấn luyện, chạy script triển khai để mô phỏng phân loại luồng mạng thời gian thực.
-- Cảnh báo sẽ hiển thị trên console và lưu vào `alerts.log`.
+### Bước 3 — Chạy pipeline (theo thứ tự)
+
+#### 3.1 EDA & Tiền xử lý (~10–20 phút)
+```bash
+python scripts/eda_preprocessing.py
+```
+**Đầu ra:** `data/processed/cleaned_data.csv`, `data/attack_distribution.png`, `data/correlation_heatmap.png`
+
+#### 3.2 Xử lý mất cân bằng & Chọn đặc trưng (~20–40 phút)
+```bash
+python scripts/imbalance_feature_selection.py
+```
+**Đầu ra:** `data/processed/train.csv`, `data/processed/test.csv`, `models/scaler.pkl`, `models/label_classes.npy`
+
+#### 3.3 Huấn luyện mô hình Logistic Regression, SVM, Naive Bayes (~5–15 phút)
+```bash
+python scripts/model_lr_svm_nb.py
+```
+**Đầu ra:** `models/logistic_regression_(sgd).pkl`, `models/svm_(sgd).pkl`, `models/naive_bayes.pkl`
+
+#### 3.4 Huấn luyện mô hình KNN & Random Forest (~15–60 phút)
+```bash
+python scripts/model_knn_rf.py
+```
+**Đầu ra:** `models/knn.pkl`, `models/random_forest.pkl`, `models/confusion_*.png`
+
+#### 3.5 Demo cảnh báo thời gian thực
+```bash
+python scripts/realtime_alert.py
+```
+**Đầu ra:** kết quả phân loại in ra console và lưu vào `alerts.log`
+
+### Chạy qua Jupyter Notebook
+```bash
+jupyter notebook notebooks/Network-Intrusion-Detection-ML.ipynb
+```
+Chạy lần lượt từ Cell 1 → Cell 6. Notebook đã bao gồm toàn bộ pipeline từ EDA đến demo thời gian thực.
 
 ---
 

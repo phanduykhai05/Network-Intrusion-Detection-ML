@@ -34,6 +34,17 @@ def clean_data(df):
     # Xóa khoảng trắng tên cột
     df.columns = df.columns.str.strip()
 
+    # Đổi tên cột trùng (xảy ra khi merge nhiều CSV)
+    cols = pd.Series(df.columns)
+    seen = {}
+    for i, c in enumerate(cols):
+        if c in seen:
+            seen[c] += 1
+            cols[i] = f"{c}.{seen[c]}"
+        else:
+            seen[c] = 0
+    df.columns = cols
+
     # Thay inf → NaN
     df.replace([np.inf, -np.inf], np.nan, inplace=True)
 
