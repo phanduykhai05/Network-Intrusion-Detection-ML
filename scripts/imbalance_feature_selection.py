@@ -40,4 +40,4 @@ def process_data(input_path, output_path):
     print("Đã lưu train.csv và test.csv vào thư mục data/")
 
 if __name__ == "__main__":
-    process_data("../data/cleaned_data.csv", "../data/")
+    process_data("./data/processed/cleaned_data.csv", "../data/")
