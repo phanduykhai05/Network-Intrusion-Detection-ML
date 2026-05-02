@@ -109,8 +109,4 @@ def process_data():
     print(f"🎉 HOÀN THÀNH! Tập train hiện có {len(train_df)} dòng.")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     process_data("./data/processed/cleaned_data.csv", "../data/")
-=======
-    process_data()
->>>>>>> 50d822e80c3e832e0820c979cedf917ab76af8df
