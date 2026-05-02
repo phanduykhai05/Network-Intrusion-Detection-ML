@@ -53,10 +53,13 @@ def process_data():
     # Tiền xử lý Label
     le = LabelEncoder()
     df['Label'] = le.fit_transform(df['Label'])
-    
+    # Save label classes for real-time inference
+    np.save(os.path.join(BASE_DIR, "models", "label_classes.npy"), le.classes_)
+
     # Scale dữ liệu
     scaler = StandardScaler()
     df[available_features] = scaler.fit_transform(df[available_features])
+    joblib.dump(scaler, os.path.join(BASE_DIR, "models", "scaler.pkl"))
 
     X = df[available_features]
     y = df['Label']

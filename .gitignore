@@ -1,7 +1,8 @@
 data/*.csv
 data/*.zip
+*.npy
 
-# models/*.pkl
+models/*.pkl
 # models/*.joblib
 
 logs/*.log
@@ -15,3 +16,4 @@ kaggle.json
 .DS_Store
 Thumbs.db
 *.csv
+*.pkl

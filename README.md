@@ -126,15 +126,15 @@ pip install -r requirements.txt
 ---
 
 ## 📊 Bảng so sánh mô hình
-| Mô hình               | Độ chính xác | Precision | Recall | F1-score |
-|-----------------------|--------------|-----------|--------|----------|
-| Logistic Regression   |     --       |    --     |   --   |   --     |
-| SVM                   |     --       |    --     |   --   |   --     |
-| Naive Bayes           |     --       |    --     |   --   |   --     |
-| KNN                   |     --       |    --     |   --   |   --     |
-| Random Forest         |     --       |    --     |   --   |   --     |
+| Mô hình               | Độ chính xác | Precision | Recall   | F1-score |
+|-----------------------|--------------|-----------|----------|----------|
+| Logistic Regression   |    91.38%    |   87.25%  |  91.38%  |  88.76%  |
+| SVM                   |    91.46%    |   87.37%  |  91.46%  |  88.87%  |
+| Naive Bayes           |    13.77%    |   94.01%  |  13.77%  |  18.19%  |
+| **KNN**               |  **97.23%**  | **98.72%**|**97.23%**|**97.88%**|
+| Random Forest         |    93.17%    |   99.34%  |  93.17%  |  96.03%  |
 
-*Điền kết quả sau khi chạy các mô hình.*
+*Đánh giá trên tập test (50,000 mẫu, weighted average). KNN đạt F1-score cao nhất trong bộ mô hình này.*
 
 ---
 
