@@ -196,3 +196,5 @@ Network-Intrusion-Detection-ML/
 ├── README.md            # Tài liệu dự án
 └── ...
 ```
+Phần 1:
+https://drive.google.com/drive/folders/1Bb3Q4Zy5QHZq94LHhTWd8sv0hrpuZZLv
