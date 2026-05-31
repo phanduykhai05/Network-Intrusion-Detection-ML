@@ -29,7 +29,6 @@ Dự án này xây dựng hệ thống phát hiện xâm nhập mạng thời gi
 - **Đặc trưng:** 79 cột (78 số + 1 nhãn phân loại)
 - **Đặc trưng luồng mạng:** Thời lượng luồng, độ dài gói, cổng, cờ TCP/UDP, byte/giây, gói/giây, ...
 - **Mất cân bằng lớp:** Phần lớn mẫu là Benign.
-
 ### 🎯 Mục tiêu học tập
 - Hiểu phân phối dữ liệu, tương quan và mất cân bằng trong dữ liệu mạng.
 - Quản lý mã nguồn và kiểm soát phiên bản với Git/GitHub.
