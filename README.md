@@ -106,7 +106,7 @@ Dự án này xây dựng hệ thống phát hiện xâm nhập mạng thời gi
 ### Yêu cầu hệ thống
 - **Python** 3.9 trở lên (khuyến nghị 3.11/3.12)
 - **RAM** tối thiểu 8 GB (khuyến nghị 16 GB khi chạy SMOTE)
-- **Dung lượng ổ đĩa** ~5 GB (dữ liệu CIC-IDS2017 + models)
+- **Dung lượng ổ đĩa** ~5 GB (dữ liệu CIC-IDS2017 + models)!
 
 ### Bước 1 — Clone & cài thư viện
 ```bash
